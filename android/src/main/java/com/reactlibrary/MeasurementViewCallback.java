@@ -67,7 +67,7 @@ public class MeasurementViewCallback implements com.shibuiwilliam.arcoremeasurem
                 obj.put("x", placedAnchorNodes.get(i).getWorldPosition().x * 100 );
                 obj.put("y", placedAnchorNodes.get(i).getWorldPosition().z * 100 ) ;// y and z cordinates are different in backend
                 obj.put("z", placedAnchorNodes.get(i).getWorldPosition().y * 100 );
-                obj.put("position", "edede");
+                obj.put("position", i);
                 obj.put("type",type );
                 payload.putString(new String(String.valueOf(i)), obj.toString());
             } catch (JSONException e) {
