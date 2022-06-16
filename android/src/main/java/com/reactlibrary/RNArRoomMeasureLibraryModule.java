@@ -29,17 +29,12 @@ public class RNArRoomMeasureLibraryModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void openSession() {
     Intent intent = new Intent(getCurrentActivity(),Measurement.class);
-//    Bundle bundle = Measurement.Companion.createBundle();
     Activity currentActivity = getCurrentActivity();
-
-//    intent.putExtra(Measurement.ON_BUTTON_CLICK_EVENT, new MeasurementViewCallback(reactContext));
-//    if (bundle != null) {
       intent.putExtra(Measurement.ON_BUTTON_CLICK_EVENT, new MeasurementViewCallback(reactContext));
 
       if (currentActivity != null) {
         currentActivity.startActivity(intent);
       }
-//    }
   }
 
   @Override

@@ -41,14 +41,6 @@ public class MeasurementViewCallback implements com.shibuiwilliam.arcoremeasurem
         }
     };
 
-//    @Override
-//    public void onButtonClick() {
-//        Log.e("mynameshahulll","workin fine");
-//        WritableMap sampleCode = Arguments.createMap();
-//        sampleCode.putString("name","shahul");
-//        sendEvent("myName",sampleCode);
-//    }
-
     @Override
     public int describeContents() {
         return 0;
