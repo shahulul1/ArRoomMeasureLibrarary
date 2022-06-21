@@ -19,6 +19,9 @@ export default {
                 }
             }
         )
+    },
+    unSubScribeForEvent(eventName) {
+        return new NativeEventEmitter(RNArRoomMeasureLibrary).removeAllListeners(eventName)
     }
 }
 // export default RNArRoomMeasureLibrary
