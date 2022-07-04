@@ -41,14 +41,6 @@ public class MeasurementViewCallback implements com.shibuiwilliam.arcoremeasurem
         }
     };
 
-//    @Override
-//    public void onButtonClick() {
-//        Log.e("mynameshahulll","workin fine");
-//        WritableMap sampleCode = Arguments.createMap();
-//        sampleCode.putString("name","shahul");
-//        sendEvent("myName",sampleCode);
-//    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -66,22 +58,24 @@ public class MeasurementViewCallback implements com.shibuiwilliam.arcoremeasurem
     }
 
     @Override
-    public void onButtonClick(@NonNull ArrayList<AnchorNode> placedAnchorNodes, @NonNull ArrayList<String> cordinatesType) {
-        WritableMap payload = Arguments.createMap();
-        for (int i=0; i<placedAnchorNodes.size(); i++){
-            String type = cordinatesType.get(i);
-            JSONObject obj = new JSONObject();
-            try {
-                obj.put("x", placedAnchorNodes.get(i).getWorldPosition().x * 100 );
-                obj.put("y", placedAnchorNodes.get(i).getWorldPosition().z * 100 ) ;// y and z cordinates are different in backend
-                obj.put("z", placedAnchorNodes.get(i).getWorldPosition().y * 100 );
-                obj.put("position", "edede");
-                obj.put("type",type );
-                payload.putString(new String(String.valueOf(i)), obj.toString());
-            } catch (JSONException e) {
-                //some exception handler code.
-            }
+    public void onButtonClick(ArrayList<AnchorNode> placedAnchorNodes, ArrayList<String> cordinatesType, ArrayList<Float> distanceList) {
+    WritableMap payload = Arguments.createMap();
+    for (int i=0; i<placedAnchorNodes.size(); i++){
+        String type = cordinatesType.get(i);
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("x", placedAnchorNodes.get(i).getWorldPosition().x * 100 );
+            obj.put("y", placedAnchorNodes.get(i).getWorldPosition().z * 100 ) ;// y and z cordinates are different in backend
+            obj.put("z", placedAnchorNodes.get(i).getWorldPosition().y * 100 );
+            obj.put("position", i);
+            obj.put("type",type );
+            payload.putString(new String(String.valueOf(i)), obj.toString());
+        } catch (JSONException e) {
+            Log.i("EXCEPTION", e.toString());
+            //some exception handler code.
         }
-        sendEvent("Coordinates", payload);
     }
+    payload.putString("DistanceList", distanceList.toString());
+    sendEvent("ARRoomCoordinates", payload);
+}
 }
